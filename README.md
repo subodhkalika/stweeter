@@ -1,0 +1,2 @@
+# MESSAGE
+Laravel app init
