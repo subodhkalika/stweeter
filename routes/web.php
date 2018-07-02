@@ -11,6 +11,17 @@
 |
 */
 
+/**
+* Show Tweets Dashboard
+*/
 Route::get('/', function () {
-    return view('welcome');
+	return view('landing');
 });
+
+Route::get('/tweets', 'TweetController@index');
+Route::post('/tweet', 'TweetController@store');
+Route::delete('/tweet/{tweet}', 'TweetController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
