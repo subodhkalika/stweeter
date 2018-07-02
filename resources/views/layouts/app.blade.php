@@ -52,6 +52,16 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+									<li>
+                                        <a href="/profile">
+                                            My Profile
+                                        </a>
+                                    </li>
+									<li>
+                                        <a href="/tweets">
+                                            All Tweets
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

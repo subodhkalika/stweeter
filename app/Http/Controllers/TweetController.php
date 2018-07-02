@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tweet;
+use App\User;
 
 class TweetController extends Controller
 {
@@ -22,9 +23,14 @@ class TweetController extends Controller
 	* @param  Request  $request
 	* @return Response
 	*/
-	public function index(Request $request)
+	public function index(Request $request, $id = null)
 	{
-		$tweets = $request->user()->tweets()->get();
+		if ($id) {
+			$user = User::find($id);
+			$tweets = $user->tweets()->orderBy('created_at', 'desc')->get();
+		} else {
+			$tweets = Tweet::orderBy('created_at', 'desc')->get();
+		}
 
 		return view('tweets', [
 			'tweets' => $tweets,
@@ -41,7 +47,7 @@ class TweetController extends Controller
 			'tweet_desc' => $request->tweet_desc,
 		]);
 
-		return redirect('/tweets');
+		return redirect('/profile');
 	}
 
 	/**
@@ -51,6 +57,6 @@ class TweetController extends Controller
 	{
 		$tweet->delete();
 
-		return redirect('/tweets');
+		return redirect('/profile');
 	}
 }

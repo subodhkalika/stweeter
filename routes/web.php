@@ -18,10 +18,12 @@ Route::get('/', function () {
 	return view('landing');
 });
 
-Route::get('/tweets', 'TweetController@index');
+Route::get('/tweets/{id?}', 'TweetController@index');
 Route::post('/tweet', 'TweetController@store');
 Route::delete('/tweet/{tweet}', 'TweetController@destroy');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile', 'UserController@getMyProfile');
