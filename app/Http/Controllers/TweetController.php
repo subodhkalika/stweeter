@@ -37,6 +37,11 @@ class TweetController extends Controller
 		]);
 	}
 
+	/**
+	* create a user's tweets.
+	*
+	* @param  Request  $request
+	*/
 	public function store(Request $request)
 	{
 		$this->validate($request, [
